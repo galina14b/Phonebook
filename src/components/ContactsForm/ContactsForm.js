@@ -1,65 +1,81 @@
 import React from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
-import css from "./ContactsForm.module.css"
+import css from "./ContactsForm.module.css";
+import { useContextBlock } from './../Context';
 
-class ContactsForm extends React.Component {
-  state = {
-    name: '',
-    number: '',
+
+const ContactsForm = () => {
+
+  const context = useContextBlock();
+
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  let nameInputId = nanoid();
+  let numberInputId = nanoid();
+
+  function handleChanges(event) {
+    if (event.currentTarget.name === 'name') {
+      return setName(event.currentTarget.value)
+    }
+
+    if (event.currentTarget.name === 'number') {
+      return setNumber(event.currentTarget.value)
+    }    
   }
 
-  nameInputId = nanoid();
-  numberInputId = nanoid();
-
-  handleChanges = event => {
-
-    this.setState({ [event.currentTarget.name]: event.currentTarget.value })
-  }
-
-  handleSubmit = event => {
+  function handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit({ name:this.state.name, number:this.state.number })
-    this.reset()
+    context.addNewContactName(name);
+    context.addNewContactNumber(number);
+    context.addContact(prev => {
+      return [...prev, ]
+    })
+
+    reset();
   }
 
-  reset = () => {
-    this.setState({ name: '' })
-    this.setState({number: ''})
+  function reset() {
+    setName('')
+    setNumber('')
   }
 
-  render() {
-    return <div className={css.block}>
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
+  
+  return <div className={css.block}>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor={nameInputId}>
           Name 
           <input
             type="text"
-            id={this.nameInputId}
-            value={this.state.name}
+            id={nameInputId}
+            value={name}
             name="name"
-            onChange={this.handleChanges}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            onChange={handleChanges}
+            // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
         </label>
-        <label htmlFor={this.numberInputId}>
+        <label htmlFor={numberInputId}>
           Number 
           <input
             type="tel"
-            id={this.numberInputId}
-            value={this.state.number}
+            id={numberInputId}
+            value={number}
             name="number"
-            onChange={this.handleChanges}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            onChange={handleChanges}
+            // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </label>
         <button type="submit">Add contact</button>
       </form>
-    </div>
-  }
+  </div>
+  
 }
 
 export default ContactsForm
+
+

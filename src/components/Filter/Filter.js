@@ -1,10 +1,15 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import css from "./Filter.module.css"
+import css from "./Filter.module.css";
+import { useContextBlock } from './../Context';
 
-const Filter = ({ onChange }) => {
+
+const Filter = () => {
+
+  const context = useContextBlock();
+  const { addFilter } = context;
+
   const handleValue = event => {
-    onChange(event.currentTarget.value)
+    addFilter(event.currentTarget.value);
   }
 
    return <label className={css.label}>Find contact by name 
@@ -15,8 +20,6 @@ const Filter = ({ onChange }) => {
     </label>
 }
 
-export default Filter
+export { Filter }
 
-Filter.prototypes = {
-  onChange: PropTypes.func
-}
+
