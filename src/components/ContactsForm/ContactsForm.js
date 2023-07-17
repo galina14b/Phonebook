@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import css from "./ContactsForm.module.css";
-import { useContextBlock } from './../Context';
+import { useContextBlock } from "components/Context";
 
 
 const ContactsForm = () => {
 
   const context = useContextBlock();
+  const { addNewContact } = context;
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -27,11 +28,9 @@ const ContactsForm = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    context.addNewContactName(name);
-    context.addNewContactNumber(number);
-    context.addContact(prev => {
-      return [...prev, ]
-    })
+    addNewContact({ name: name, number: number })
+    // this.props.onSubmit({ name: name, number: number })
+
 
     reset();
   }
