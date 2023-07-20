@@ -5,10 +5,9 @@ import css from "./ContactsForm.module.css";
 import { useContextBlock } from "components/Context";
 
 
-const ContactsForm = () => {
+const ContactsForm = ({contacts}) => {
 
   const context = useContextBlock();
-  const { addNewContact } = context;
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -28,9 +27,20 @@ const ContactsForm = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    addNewContact({ name: name, number: number })
-    // this.props.onSubmit({ name: name, number: number })
-
+    let hasContact
+    contacts.map(item => {
+      if (item.name === name && item.number === number) {
+        alert("Такий контакт вже є");
+        hasContact = true;
+      } else {
+        hasContact = false
+      }
+      return hasContact
+    })
+    
+    if (!hasContact) {
+      context.addNewContact({ name: name, number: number })
+    }
 
     reset();
   }

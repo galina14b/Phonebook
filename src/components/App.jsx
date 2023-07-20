@@ -49,47 +49,19 @@ const App = () => {
 
   const handleFilter = (onChange) => {
     setFilter(onChange);
-    // this.setState({ filter: onChange })
   }
-
-  // const handleData = (data) => {
-  //   if (contacts.find(contact => (contact.name === data.name))) {
-  //     return alert(data.name + ' is already in contacts.')
-  //   } else {
-  //     return setContacts(prevState => {
-  //       return { contacts: [...prevState.contacts, { id: nanoid(), name: data.name, number: data.number}]}
-  //     })
-  //   }
-  // }
 
   const deleteContact = (id) => {
     setContacts(prevState => (
       prevState.filter(contact => contact.id !== id)
     ))
   }
-
-  // const filtration = (filteredData) => {
-  //   // const filteredData = contacts.filter((el) => {
-  //   //   if (filter === '') {
-  //   //     return el;
-  //   //   }
-  //   //   else {
-  //   //     return el.name.toLowerCase().includes(filter)
-  //   //   }
-  //   // })
-  //   return (
-  //     <ContactsList contacts={filteredData} onDelete={deleteContact} />
-  //   )
-  // }
-  
   
     return (
       <div className={css.block}>
         <h2>Phonebook</h2>
-          <ContactsForm />
-        {/* <ContactsForm onSubmit={handleData} /> */}
-        {/* { filtration(filter.toLowerCase())} */}
-        {/* <ContactsList contacts={filteredData} onDelete={deleteContact} /> */}
+          <ContactsForm contacts={contacts} />
+       
         { filtration(filter.toLowerCase())}
 
 
