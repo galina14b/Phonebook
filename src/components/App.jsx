@@ -26,9 +26,14 @@ const App = () => {
 
   useEffect(() => {
     
-    setContacts(prevState => (
+    if (!context.newContact) {
+      return
+    } else {
+      setContacts(prevState => (
       ([...prevState, { id: nanoid(), name: context.newContact.name, number: context.newContact.number }]))
     )
+    }
+    
   }, [context.newContact]);
 
   const filtration = (filter) => {
