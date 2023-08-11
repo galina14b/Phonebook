@@ -1,11 +1,16 @@
 import React from "react";
 import css from "./Filter.module.css";
 
-const Filter = ({onChange}) => {
+import { useDispatch } from 'react-redux'
+import { setNewFilterValue } from '../../redux/filterSlice/filterSlice';
 
+
+const Filter = () => {
+  const dispatch = useDispatch();
 
   const handleValue = event => {
-    onChange(event.currentTarget.value);
+    let filterValue = event.currentTarget.value;
+    dispatch(setNewFilterValue(filterValue.toLowerCase()));
   }
 
    return <label className={css.label}>Find contact by name 
