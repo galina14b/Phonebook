@@ -9,28 +9,22 @@ const initialState = {
   ],
 }
 
-export const counterSlice = createSlice({
+export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
-    add: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value.push(action.payload)
+    add: (state, {payload}) => {
+      state.value.push(payload)
     },
-    remove: (state, action) => {
+    remove: (state, {payload}) => {
       return {
-        ...state, 
-        value: [...state.value].filter((item) => item.id !== action.payload)
+        value: state.value.filter((item) => item.id !== payload)
 
       }
     },
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { add, remove } = counterSlice.actions
+export const { add, remove } = contactsSlice.actions
 
-export default counterSlice.reducer
+export default contactsSlice.reducer

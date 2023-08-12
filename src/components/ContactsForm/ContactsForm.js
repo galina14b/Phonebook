@@ -3,8 +3,10 @@ import { nanoid } from "nanoid";
 import css from "./ContactsForm.module.css";
 
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { add } from '../../redux/contactsSlice/contactsSlice';
+import { contactsState } from '../../redux/selectors/selectors';
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export function ContactsForm() {
   const [name, setName] = useState('');
@@ -13,7 +15,7 @@ export function ContactsForm() {
   let nameInputId = nanoid();
   let numberInputId = nanoid();
 
-  const contacts = useSelector((state) => state.contacts.value);
+  const contacts = useSelector(contactsState);
   const dispatch = useDispatch();
 
   function handleChanges(event) {
