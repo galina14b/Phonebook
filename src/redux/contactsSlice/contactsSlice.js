@@ -19,7 +19,6 @@ export const contactsSlice = createSlice({
     remove: (state, {payload}) => {
       return {
         value: state.value.filter((item) => item.id !== payload)
-
       }
     },
   },
