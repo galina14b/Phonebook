@@ -1,14 +1,14 @@
 import css from "./ContactsListItem.module.css";
 import { useDispatch } from 'react-redux';
-import { remove } from '../../redux/contactsSlice/contactsSlice';
+import { deleteContact } from "redux/operations/operations";
 
 const ContactsListItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const listItems = (data) => {
     return (
-      <li className={css.li}>{data.name} - {data.number} <button
-          aria-label="Decrement value" onClick={() => dispatch(remove(data.id))}>Delete</button>
+      <li className={css.li}>{data.name} - {data.number}
+        <button aria-label="Decrement value" onClick={() => dispatch(deleteContact(data.id))}>Delete</button>
       </li> 
     )
   }

@@ -4,9 +4,9 @@ import css from "./ContactsForm.module.css";
 
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { add } from '../../redux/contactsSlice/contactsSlice';
 import { contactsState } from '../../redux/selectors/selectors';
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { addNewContact } from "redux/operations/operations";
 
 export function ContactsForm() {
   const [name, setName] = useState('');
@@ -43,7 +43,7 @@ export function ContactsForm() {
     })
     
     if (!hasContact) {
-      dispatch(add({id: nameInputId, name: name, number: number}))
+      dispatch(addNewContact({ id: nameInputId, name: name, number: number }));
     }
 
     reset();

@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux'
-import counterReducer from './contactsSlice/contactsSlice';
+import contactReducer from './contactsSlice/contactsSlice';
 import filterReducer from './filterSlice/filterSlice';
 
 const persistConfig = {
@@ -16,7 +16,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({ 
-  contacts: counterReducer,
+  contacts: contactReducer,
   filter: filterReducer,
 })
 
