@@ -31,10 +31,7 @@ const ContactsList = () => {
     <div>
       <h2>Contacts</h2>
 
-      {/* {isLoading && <p>Loading contacts...</p>}
-      {error && <p>Smth is wrong</p>} */}
-
-      { contacts.length > 0 && <ul>
+      { contacts && contacts.length > 0 && <ul>
         {!filter && contacts.map(item => {
           return <ContactsListItem item={item} key={item.id} />
         })}
