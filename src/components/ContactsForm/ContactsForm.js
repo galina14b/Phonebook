@@ -20,11 +20,11 @@ export function ContactsForm() {
 
   function handleChanges(event) {
     if (event.currentTarget.name === 'name') {
-      return setName(event.currentTarget.value)
+      return setName(event.target.value)
     }
 
     if (event.currentTarget.name === 'number') {
-      return setNumber(event.currentTarget.value)
+      return setNumber(event.target.value)
     }
   }
 
@@ -32,14 +32,13 @@ export function ContactsForm() {
   function handleSubmit(event) {
     event.preventDefault();
     let hasContact
-    contacts.map(item => {
+    contacts.find(item => {
       if (item.name === name && item.number === number) {
         alert("Такий контакт вже є");
-        hasContact = true;
+        return hasContact = true;
       } else {
-        hasContact = false
+        return hasContact = false
       }
-      return hasContact
     })
     
     if (!hasContact) {
