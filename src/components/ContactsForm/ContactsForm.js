@@ -55,10 +55,11 @@ export function ContactsForm() {
 
 
   return <div className={css.block}>
-        <form onSubmit={handleSubmit}>
+        <form className={css.form} onSubmit={handleSubmit}>
           <label htmlFor={nameInputId}>
            Name
-           <input
+        <input
+          className={css.input}
             type="text"
             id={nameInputId}
             value={name}
@@ -70,7 +71,8 @@ export function ContactsForm() {
         </label>
         <label htmlFor={numberInputId}>
           Number
-          <input
+        <input
+            className={css.input}
             type="tel"
             id={numberInputId}
             value={number}
@@ -80,7 +82,7 @@ export function ContactsForm() {
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={css.btn} type="submit">Add contact</button>
       </form>
   </div>
 }

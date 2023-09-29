@@ -20,12 +20,16 @@ const App = () => {
 
   return (
     <div className={css.block}>
-      <h2>Phonebook</h2>
-      <ContactsForm />
-      <Filter />
-      {isLoading && <p>Loading contacts...</p>}
-      {error && <p>Smth is wrong</p>}
-      <ContactsList />
+      <div className={css.wrapper}>
+        <div className={css.content}>
+          <h2 className={css.title}>Phonebook</h2>
+          <ContactsForm />
+          <Filter />
+          {isLoading && <p>Loading contacts...</p>}
+          {error && <p>Smth is wrong</p>}
+          <ContactsList />
+        </div>
+      </div>
     </div>
   )  
 };

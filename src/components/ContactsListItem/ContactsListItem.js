@@ -9,7 +9,9 @@ const ContactsListItem = ({ item }) => {
 
   const listItems = (data) => {
     return (
-      <li className={css.li}>{data.name} - {data.number}
+      <li className={css.li}>
+        <div className={css.icon}></div>
+        <div className={css.name}>{data.name} - {data.number}</div>
         <button aria-label="Decrement value" onClick={() => dispatch(handleDelete)}>Delete</button>
       </li> 
     )

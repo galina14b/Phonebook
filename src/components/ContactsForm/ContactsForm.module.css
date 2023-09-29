@@ -1,11 +1,10 @@
 .block {
-  width: 500px;
-  border: solid 1px black;
-  /* margin: 0 auto; */
+  border: solid 2px #094815;
+  border-radius: 30px;
   padding: 30px;
 }
 
-.block form {
+.form {
   display: flex;
   flex-direction: column;
 }
@@ -13,18 +12,36 @@
 .block label {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
-.block input {
-  margin-top: 10px;
-  width: 200px;
-}
-
-.block button {
-  width: 100px;
-  margin-top: 20px;
+.input {
+  width: 100%;
+  border: none;
+  border-bottom: solid 2px #094815;
   background-color: transparent;
-  height: 20px;
-  border: solid 1px darkgray;
+  outline: none;
+}
+
+.btn {
+  width: 200px;
+  margin: 20px auto 0;
+  background-color: #e75a28;
+  height: 40px;
+  border: solid 2px #e75a28;
   border-radius: 5px;
+  color: #f1f3f6;
+  transition: linear, 0.7s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #e75a28;
+  background-color: transparent;
+}
+
+@media all and (max-width: 350px) {
+  .block {
+    padding: 15px;
+  }
 }

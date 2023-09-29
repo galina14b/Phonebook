@@ -1,4 +1,35 @@
 .block {
-  margin: 30px;
-  font-size: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  background-color: #094815;
+}
+
+.wrapper {
+  margin: 100px auto;
+  padding: 20px 20px;
+  width: calc(70% - 80px);
+  background-color: #f1f3f6;
+  border-radius: 30px;
+  font-size: 18px;
+}
+
+.content {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  color: #094815;
+}
+
+@media all and (max-width: 670px) {
+  .wrapper {
+    width: calc(100% - 80px);
+  }
 }

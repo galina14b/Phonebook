@@ -1,0 +1,13 @@
+.contactsList {
+  margin: 0 auto;
+}
+
+.contactsList h2 {
+  color: #094815;
+  text-align: center;
+}
+
+.contactsList ul {
+  list-style: none;
+  padding: 0;
+}

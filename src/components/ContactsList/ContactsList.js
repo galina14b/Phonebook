@@ -1,21 +1,13 @@
 import ContactsListItem from "components/ContactsListItem/ContactsListItem";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { contactsState, filterState } from "../../redux/selectors/selectors";
-// import { useDispatch } from "react-redux";
-// import { useEffect } from "react";
-// import { fetchContacts } from "redux/operations/operations";
+import css from './ContactsList.module.css';
 
 const ContactsList = () => {
-  // const dispatch = useDispatch();
 
   const contacts = useSelector(contactsState);
-  // const isLoading = useSelector(isLoadingState);
-  // const error = useSelector(errorState);
   const filter = useSelector(filterState);
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
 
   const filtration = (filter) => {
     const filteredData = contacts.filter((item) => {
@@ -28,7 +20,7 @@ const ContactsList = () => {
   }
 
   return (
-    <div>
+    <div className={css.contactsList}>
       <h2>Contacts</h2>
 
       { contacts && contacts.length > 0 && <ul>
